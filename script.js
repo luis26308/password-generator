@@ -17,6 +17,7 @@ function writePassword() {
  * generate a password based on certain criteria
  */
 function generatePassword() {
+  // Used split() funtion to convert strings into character arrays //
   let abcUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   let abcUpperArr = abcUpper.split("");
   let abcLower = "abcdefghijklmnopqrstuvwxyz";
@@ -25,46 +26,46 @@ function generatePassword() {
   let numArr = num.split("");
   let sym = "!#$%&\()*+,-./:;<=>?@^[\\]^_`{|}~";
   let symArr = sym.split("");
-  // Password is currently blank! We need to make a better one
   let password = "";
+  // empty array to be filled by confirmed character arrays // *
   let allChars = [];
 
+
   let passLength = prompt("Choose a password length between 8 and 128 characters");
-  
+
 
   if (passLength < 8 || passLength > 128) {
     alert("Please choose a whole number between 8 and 128 characters");
   }
 
-  else if (confirm("Would you like to use uppcase letters?")) {
-    Array.prototype.apply(allChars, abcUpperArr);
+  // used window.confirm method to accept or decline character arrays // 
+  if (window.confirm("Would you like to use uppcase letters?")) {
+    // used "Array.prototype.push.apply(array1, array2)"" to merge confirmed character arrays into allChars* array //
+    Array.prototype.push.apply(allChars, abcUpperArr);
   }
 
-  else if (confirm("Would you like to use lowercase letters?")) {
-    Array.prototype.apply(allChars, abcLowerArr);
+  if (window.confirm("Would you like to use lowercase letters?")) {
+    Array.prototype.push.apply(allChars, abcLowerArr);
   }
 
-  else if (confirm("Would you like to use numbers?")) {
-    Array.prototype.apply(allChars, numArr);
+  if (window.confirm("Would you like to use numbers?")) {
+    Array.prototype.push.apply(allChars, numArr);
   }
 
-  else if (confirm("Would you like to use special characters?")) {
-    Array.prototype.apply(allChars, symArr);
+  if (window.confirm("Would you like to use special characters?")) {
+    Array.prototype.push.apply(allChars, symArr);
   }
 
-  // if (allChars.length === 0) {
-  //   alert("At least one type of characters must be applied.");
-  // }
+  if (allChars.length === 0) {
+    alert("At least one type of characters must be applied.");
+  }
 
-  // else (let i = 0; i < passLength.length; ++i) {
-  //   let random = math.floor(math.random().length);
-  //   password = allChars[random];
-  // }
-
-
-
-
-
+  else
+    for (let i = 0; i < passLength; i++) {
+      let randomChars = Math.floor(Math.random() * allChars.length);
+      // "+=" denotes "x2 = x1 + y"
+      password += allChars[randomChars];
+    }
 
 
   return password;
