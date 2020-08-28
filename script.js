@@ -63,7 +63,7 @@ function generatePassword() {
   else
     for (let i = 0; i < passLength; i++) {
       let randomChars = Math.floor(Math.random() * allChars.length);
-      // "+=" denotes "x2 = x1 + y"
+      // "+=" denotes "x2 = x1 + y" //
       password += allChars[randomChars];
     }
 
